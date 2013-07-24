@@ -1,0 +1,245 @@
+body {
+  font-family: helvetica;
+  font-size: 12pt;
+}
+/* block els */
+method, property, definition, field, interface, interfaces, enum, doc, properties, fields, methods, staticmethods { display: block; }
+
+definition, interface {
+  padding: 15px;
+}
+
+field, property, enum {
+  padding-left: 15px;
+}
+
+properties, fields {
+  padding: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: solid 4px #E8F6EB;
+}
+
+properties:before {
+  content: "Properties";
+  background-color: #E8F6EB;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  padding: 5px;
+}
+fields:before {
+  content: "Fields";
+  background-color: #E8F6EB;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  padding: 5px;
+}
+staticmethods:before {
+  content: "Static Methods";
+  display: block;
+  background-color: #76D5FF;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  padding: 5px;
+}
+methods:before {
+  content: "Methods";
+  display: block;
+  background-color: #76D5FF;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  padding: 5px;
+}
+method {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: solid 2px #F0F0F0;
+}
+
+method, field, property {
+    min-height: 30px;
+}
+
+body > definition {
+  border: solid 4px #f0f0f0;
+  margin-top: 10px;
+}
+
+interfaces > interface:before {
+  content: "Implements Interface: ";
+  display: block;
+  margin-bottom: 5px;
+  font-size: 8pt;
+  background-color: #FFCCD5;
+  padding: 3px;
+}
+
+interfaces > interface > methods:before, 
+interfaces > interface > staticmethods:before, 
+interfaces > interface > properties:before, 
+interfaces > interface > fields:before {
+    font-size: 8pt;
+    padding: 3px;
+}
+
+interface:before {
+  content: "Defines Interface: ";
+  display: block;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  background-color: #FF6042;
+  padding: 5px;
+}
+
+enum:before {
+  content: "Defines Enum: ";
+  display: block;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  background-color: #FFDCFF;
+  padding: 5px;
+}
+
+enum {
+    border: solid 4px #FFDCFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+definition definition, defintion interface, definition enum {
+    margin-top: 10px;
+}
+definition > definition {
+  border: solid 4px #76D5FF;
+}
+
+definition > definition > definition {
+  border: solid 4px #7A80FF;
+}
+
+definition > pptype > type, interface > pptype > type, enum > pptype > type {
+  color: gray;
+}
+
+definition > pptype > name, interface > pptype > name, enum > pptype > name {
+  color: #424242;
+}
+
+definition > pptype {
+  font-size: 16pt;
+  padding-bottom: 20px;
+  display: block;
+}
+
+interfaces {
+    border: solid 4px #FFCCD5;
+    display: block;
+}
+
+interfaces > interface > pptype {
+  font-size: 12pt;
+  padding-bottom: 10px;
+  display: block;
+}
+interfaces > interface method, interfaces > interface property, interfaces > interface field {
+  font-size: 10pt;
+  min-height: 20px;
+  border-bottom: solid 1px #F0F0F0;
+}
+
+interface > pptype {
+  font-size: 16pt;
+  padding-bottom: 20px;
+  display: block;
+}
+enum > pptype {
+  font-size: 16pt;
+  padding-bottom: 20px;
+  display: block;
+}
+
+definition > method {
+  padding: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: solid 4px #EBEBEB;
+}
+
+definition > interface {
+  padding: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: solid 4px #FF6042;
+}
+
+attribute {
+  padding-right: 5px;
+  color: #5F5E5F;
+}
+
+type {
+  color: #03697A;  
+}
+
+genericargs type {
+  color: #006400;
+}
+
+fsharpfunc {
+  color: black;
+}
+
+specialname {
+  color: #FF9300;
+}
+
+ppmethod > name { color: #3364A4; }
+ppproperty > name { color: #008F51; }
+ppfield > name { color:#9537FF; }
+
+doc {
+  padding-bottom: 10px;
+  font-family: "monaco";
+}
+
+doc > example > code {
+  white-space: pre ; 
+  unicode-bidi: embed;
+  display: block;
+  font-size: 11pt;
+}
+
+doc > summary {
+  white-space: pre;
+  font-size: 10pt;
+}
+
+doc > example {
+  margin-top: 5px;
+  display: block;
+  border: 2px solid #f0f0f0;
+  padding: 10px;
+}
+
+debug {
+  color: red;
+  font-size: 8pt;
+  float: right;
+}
+
+toc > a {
+  font-size: 16pt;
+  color: #FF9300;
+  text-decoration: none;
+}
+
+.homelink {
+  float: left;
+  font-size: 8pt;
+  margin-left: 5px;
+  margin-top: 5px;
+  color: blue;
+}
