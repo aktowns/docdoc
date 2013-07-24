@@ -86,6 +86,10 @@ module PrettyPrint =
                     sprintf "<specialname class='get'>get</specialname> %s" (operator.Name.Substring(4))
                 elif operator.Name.StartsWith("set_") then
                     sprintf "<specialname class='set'>set</specialname> %s" (operator.Name.Substring(4))
+                elif operator.Name.StartsWith("add_") then
+                    sprintf "<specialname class='add'>add</specialname> %s" (operator.Name.Substring(4))
+                elif operator.Name.StartsWith("remove_") then
+                    sprintf "<specialname class='remove'>remove</specialname> %s" (operator.Name.Substring(4))
                 elif operator.Name.StartsWith("|") then
                     sprintf "<specialname class='activepattern'>active pattern</specialname> %s" operator.Name
                 elif operator.Name = ".ctor" then
@@ -157,7 +161,7 @@ module PrettyPrint =
 let mutable currentContext = "";
 let ioprintf format = Printf.kprintf (fun msg -> File.AppendAllText(currentContext, msg)) format
 
-let xpath = new XPathDocument(Path.ChangeExtension("oomphd.exe", ".xml"))
+let xpath = new XPathDocument(Path.ChangeExtension(Environment.GetCommandLineArgs().[1], ".xml"))
 let navi = xpath.CreateNavigator()
 type docElements = 
 | Method of MethodReference
@@ -306,11 +310,13 @@ let handleAssembly (asm : AssemblyDefinition) =
     asm.MainModule.Types.ToList 
     |> List.filter (fun x -> nonUserFilter x.CustomAttributes.ToList)
     |> List.filter (fun x -> x.IsPublic)
-    |> List.iter (fun x -> File.AppendAllText("index.html", (sprintf "<a href='%s.html'>%s</a><br />" x.Name x.FullName)))
+    |> List.iter (fun x -> 
+        if (File.Exists(sprintf "%s.html" x.Name)) then
+            File.AppendAllText("index.html", (sprintf "<a href='%s.html'>%s</a><br />" x.Name x.FullName)))
     File.AppendAllText("index.html", 
-        sprintf "</toc><br />documentation generated for \"%s\" by <b>docuhax super mega alpha</b> ashleyis&lt;ashleyis@me.com&gt;</body></html>" asm.FullName)
+            sprintf "</toc><br />documentation generated for \"%s\" by <b>docuhax super mega alpha</b> ashleyis&lt;ashleyis@me.com&gt;</body></html>" asm.FullName)
     
-    
+
 [<EntryPoint>]
 let main args =
     let target = args.[0]
